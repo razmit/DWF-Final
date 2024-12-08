@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: content">
+<head>
+    <title th:text="${pageTitle}">Edit Author</title>
+</head>
+<body>
+<div th:fragment="content">
+    <h1>Edit Author</h1>
+    <form th:action="@{/authors/{id}(id=${author.id})}" th:object="${author}" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" th:field="*{name}" required>
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+        <a href="/authors" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

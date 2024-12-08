@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Guts' Library</title>
+    <!-- Bootstrap 4.3 CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Optional Custom CSS -->
+    <style>
+        body {
+
+            color: #f8f9fa;      /* light text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .sidebar {
+            background: #3c3c3c;  /* a slightly lighter dark gray for the sidebar */
+            min-height: 100vh;    /* full height sidebar */
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar a {
+            color: #f8f9fa;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 10px;
+            color: #fff;
+        }
+
+        .accent-text {
+            color: #d1b794; /* a lighter brownish color for accents */
+        }
+    </style>
+</head>
+<body class="d-flex flex-column">
+<div class="d-flex flex-grow-1">
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column justify-content-between">
+        <div>
+            <h2 class="accent-text">Guts' Library</h2>
+            <ul class="list-unstyled">
+                <li class="mb-2">
+                    <a class="d-block py-1 accent-text" th:href="@{/authors}">
+                        Authors
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a class="d-block py-1 accent-text" th:href="@{/books}">
+                        Books
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a class="d-block py-1 accent-text" th:href="@{/authors}">
+                        Genres
+                    </a>
+                </li>
+                <!-- Add more menu items here as needed -->
+            </ul>
+        </div>
+        <div>
+            <!-- Optional sidebar footer or logo -->
+            <small class="text-muted">Knowledge through struggle</small>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content flex-grow-1 accent-bg">
+        <!-- Insert the main page content fragment here -->
+        <div th:replace="${pageContent} :: content"></div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p class="mb-0">&copy; 2024 Guts' Library</p>
+</div>
+
+<!-- Bootstrap JS and dependencies (optional for styling, required for some components) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
