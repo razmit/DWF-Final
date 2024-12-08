@@ -1,6 +1,7 @@
 package com.dwf.libreriaguts.service;
 
 import com.dwf.libreriaguts.dto.GenreDto;
+import com.dwf.libreriaguts.entity.Author;
 import com.dwf.libreriaguts.entity.Genre;
 import com.dwf.libreriaguts.repository.IGenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +52,10 @@ public class GenreService {
     }
 
     // Save or update a genre
-    public void saveGenre(GenreDto genreDTO) {
-        genreRepository.save(convertToEntity(genreDTO));
+    public GenreDto saveGenre(GenreDto genreDTO) {
+        Genre genre = convertToEntity(genreDTO);
+        Genre savedGenre = genreRepository.save(genre);
+        return convertToDTO(savedGenre);
     }
 
     // Delete a genre

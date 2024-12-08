@@ -4,10 +4,16 @@
     <title th:text="${pageTitle}">Edit Author</title>
 </head>
 <body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
 <div th:fragment="content">
     <div class="container mt-4">
         <h1 class="text-center mb-4" th:text="${pageTitle}"></h1>
-        <form th:action="@{/genres}" th:object="${genre}" method="post" class="p-4 border rounded shadow-sm bg-light">
+        <form th:action="@{/genres/{id}(id=${genre.id})}" th:object="${genre}" method="post" class="p-4 border rounded shadow-sm bg-light">
+            <!-- Hidden field for ID -->
+            <input type="hidden" th:field="*{id}" />
+
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" class="form-control" th:field="*{name}" required>
@@ -19,5 +25,8 @@
         </form>
     </div>
 </div>
+</body>
+</html>
+
 </body>
 </html>

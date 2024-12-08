@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,8 +21,8 @@ public class Genre {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Book> books;
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
+    private Set<Book> books = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -38,11 +40,11 @@ public class Genre {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
+    public Set<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(Set<Book> books) {
         this.books = books;
     }
 }
